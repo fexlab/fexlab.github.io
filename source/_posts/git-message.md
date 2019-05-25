@@ -3,7 +3,7 @@ title: Git message
 date: 2017-05-13 18:05:11
 tags:
   - git
-cover: http://image96.360doc.com/DownloadImg/2016/05/0520/71142080_1.jpg
+cover: /img/cover_git_message.jpg
 ---
 
 # Commit message 的格式

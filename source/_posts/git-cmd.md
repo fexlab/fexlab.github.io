@@ -6,14 +6,10 @@ tags:
 cover: /img/cover_git_shell.png
 ---
 
-Git常用命令
-
-```
-Workspace：工作区
-Index／Stage：暂存区
-Repository：仓库区（或本地仓库）
-Remote：远程仓库
-```
+- Workspace：工作区
+- Index／Stage：暂存区
+- Repository：仓库区（或本地仓库）
+- Remote：远程仓库
 
 一、新建代码库
 
@@ -43,8 +39,14 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
   $ git config [--global] [user.name](http://user.name) "[name]"
   $ git config [--global] user.email "[email address]"
 
-  # 生存密钥
+  # 生成密钥
   $ ssh-keygen -t rsa -C "[xxx@gmail.com]"
+
+  # 查看密钥
+  $ cat ~/.ssh/id_rsa.pub
+
+  # 测试密钥
+  $ ssh -T git@github.com
 ```
 
 三、增加/删除文件
@@ -56,8 +58,17 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
   # 添加指定目录到暂存区，包括子目录
   $ git add [dir]
 
+  # 添加所有改变的文件
+  $ git add -A .
+
+  # 添加所有内容
+  $ git add -A
+
   # 添加当前目录的所有文件到暂存区
   $ git add .
+
+  # 添加编辑或者删除的文件，不包括新添加的文件
+  $ git add -u
 
   # 删除工作区文件，并且将这次删除放入暂存区
   $ git rm [file1] [file2] ...
@@ -102,6 +113,9 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 
   # 列出所有本地分支和远程分支
   $ git branch -a
+
+  # 查看每个分支的最新提交记录
+  $ git branch -av
 
   # 列出本地分支和远程分支关系
   $ git branch -vv
@@ -240,14 +254,23 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
   # 删除远程已经不存在的分支
   $ git remote prune origin
 
+  # 删除跟踪仓库地址
+  $ git remote rm origin
+
   # 增加一个新的远程仓库，并命名
-  $ git remote add [shortname] [url]
+  $ git remote add origin [url]
+
+  # 修改远程仓库地址
+  $ git remote set-url origin [url]
 
   # 取回远程仓库的变化，并与本地分支合并
   $ git pull [remote] [branch]
 
   # 上传本地指定分支到远程仓库
   $ git push [remote] [branch]
+
+  # 提交到服务器并在服务器新建dev分支
+  $ git push --set-upstream origin dev
 
   # 强行推送当前分支到远程仓库，即使有冲突
   $ git push [remote] --force
@@ -293,3 +316,44 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
   # 生成一个可供发布的压缩包
   $ git archive
 ```
+
+十一、常见问题
+
+1、远程分支获取最新的版本到本地
+
+- 执行git pull命令
+- 如果以上命令还是失败尝试以下步骤：
+  1. 首先从远程的origin的master主分支下载最新的版本到origin/master分支上<br>`git fetch origin master`
+
+  2. 比较本地的master分支和origin/master分支的差别<br>`git log -p master..origin/master`
+
+  3. 进行合并<br>`git merge origin/master`
+
+2、如何解决`failed to push some refs to git`
+
+  ```
+  # 进行代码合并
+  $ git pull --rebase origin master
+
+  # 完成代码上传
+  $ git push -u origin master
+  ```
+
+3、如何解决`If you wish to set tracking information for this branch you can do so with: git branch --set-upstream-to=origin/ master`
+
+- 指定当前当前工作目录工作分支，跟远程仓库分支之间的关系
+  `git branch --set-upstream master origin/master`
+
+4、`git pull`获取最新代码报以下错误 `fatal: refusing to merge unrelated histories`
+
+- git pull之后加上可选参数 --allow-unrelated-histories 强制合并
+  `git pull origin master --allow-unrelated-histories`
+
+5、`.gitignore`规则不生效的解决办法
+
+- 把某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，原因是.gitignore只能忽略那些原来没有被追踪的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未被追踪状态），然后再提交：
+  ```
+  git rm -r --cached . 或者 git rm -r README.md
+  git add .
+  git commit -m 'update .gitignore'
+  ```

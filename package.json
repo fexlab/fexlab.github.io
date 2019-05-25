@@ -2,6 +2,7 @@
   "name": "cafe-blog",
   "version": "0.0.0",
   "private": true,
+  "scripts": {},
   "hexo": {
     "version": "3.8.0"
   },
