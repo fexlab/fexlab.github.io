@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mac编译安装PHP5.6.40 - 咖啡 - Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="fexlab,"> 
+    <meta name="description" content="起因Mac iTerm下使用brew管理依赖可以说是不二选了，可是最新的brew upgrade已经从core中抛弃php 5.6了，唯一的办法可能就是自己编译安装，这一流坑算是要踩一遍了。
+开始源,"> 
+    <meta name="author" content="Cafe"> 
+    <link rel="alternative" href="atom.xml" title="咖啡 - Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">咖啡 - Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="https://felab.me"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">Mac编译安装PHP5.6.40</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">Mac编译安装PHP5.6.40</h1>
+        <div class="stuff">
+            <span>五月 30, 2019</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/php/">php</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h3><p>Mac iTerm下使用brew管理依赖可以说是不二选了，可是最新的brew upgrade已经从core中抛弃php 5.6了，唯一的办法可能就是自己编译安装，这一流坑算是要踩一遍了。</p>
+<h4 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h4><p>源码地址：<code>wget -c http://cn2.php.net/distributions/php-5.6.40.tar.gz</code></p>
+<p>解压文件：<code>tar -zxvf php-5.6.40.tar.gz</code></p>
+<h4 id="配置初始化"><a href="#配置初始化" class="headerlink" title="配置初始化"></a>配置初始化</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">./configure \</span><br><span class="line">--prefix=/usr/<span class="built_in">local</span>/php5.6 \</span><br><span class="line">--with-mysql \</span><br><span class="line">--with-mysqli \</span><br><span class="line">--with-pdo-mysql \</span><br><span class="line">--with-mhash \</span><br><span class="line">--with-curl \</span><br><span class="line">--with-gd \</span><br><span class="line">--with-zlib \</span><br><span class="line">--with-mcrypt \</span><br><span class="line">--with-xpm-dir=/usr/X11/include \</span><br><span class="line">--with-gd=/usr/<span class="built_in">local</span>/Cellar/gd/2.2.5 \</span><br><span class="line">--with-freetype-dir=/usr/<span class="built_in">local</span>/Cellar/freetype/2.10.0 \</span><br><span class="line">--with-jpeg-dir=/usr/<span class="built_in">local</span>/Cellar/libjpeg \</span><br><span class="line">--with-png-dir=/usr/<span class="built_in">local</span>/Cellar/libpng/1.6.37 \</span><br><span class="line">--with-libxml-dir=/usr/<span class="built_in">local</span>/Cellar/libxml2/2.9.9_2 \</span><br><span class="line">--with-zlib-dir=/usr/<span class="built_in">local</span>/Cellar/zlib/1.2.11 \</span><br><span class="line">--with-iconv=/usr/<span class="built_in">local</span>/Cellar/libiconv/1.16 \</span><br><span class="line">--with-curl=/usr/<span class="built_in">local</span>/Cellar/curl/7.65.0 \</span><br><span class="line">--with-config-file-path=/usr/<span class="built_in">local</span>/php5.6/etc \</span><br><span class="line">--<span class="built_in">enable</span>-gd-native-ttf \</span><br><span class="line">--<span class="built_in">enable</span>-gd-jis-conv \</span><br><span class="line">--<span class="built_in">enable</span>-xml \</span><br><span class="line">--<span class="built_in">enable</span>-mbstring \</span><br><span class="line">--<span class="built_in">enable</span>-sockets \</span><br><span class="line">--<span class="built_in">enable</span>-simplexml \</span><br><span class="line">--<span class="built_in">enable</span>-soap \</span><br><span class="line">--<span class="built_in">enable</span>-mbstring=all \</span><br><span class="line">--<span class="built_in">enable</span>-sockets \</span><br><span class="line">--<span class="built_in">enable</span>-pdo \</span><br><span class="line">--<span class="built_in">enable</span>-cli \</span><br><span class="line">--<span class="built_in">enable</span>-fpm</span><br></pre></td></tr></table></figure>
+<p><code>./configure</code>可能会找不到相关依赖，比如gd库、zlib等等，不用急，基本上<code>brew search\install</code>都能搞定。</p>
+<h4 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<h4 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 复制php.ini</span><br><span class="line">cp php.ini-development /usr/local/php5.6/etc/php.ini</span><br><span class="line"># 复制php-fpn.conf</span><br><span class="line">cp /usr/local/php5.6/etc/php-fpm.conf.default /usr/local/php5.6/etc/php-fpm.conf</span><br></pre></td></tr></table></figure>
+<p>修改<code>/usr/local/php5.6/etc/php-fpm.conf</code>设置<code>pid = run/php-fpm.pid</code></p>
+<h4 id="php-fpm命令"><a href="#php-fpm命令" class="headerlink" title="php-fpm命令"></a>php-fpm命令</h4><ul>
+<li>启动：<code>/usr/local/php5.6/sbin/php-fpm</code></li>
+<li>重启：<code>kill -USR2 `cat /usr/local/php5.6/var/run/php-fpm.pid`</code></li>
+<li>关闭：<code>kill -INT `cat /var/run/php-fpm/php-fpm.pid`</code></li>
+</ul>
+<h3 id="新增PHP扩展"><a href="#新增PHP扩展" class="headerlink" title="新增PHP扩展"></a>新增PHP扩展</h3><p>以新增<code>mcrypt</code>扩展为例，进入对应php版本扩展目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/Downloads/php-5.6.40/ext/mcrypt</span><br></pre></td></tr></table></figure></p>
+<p>编译安装扩展<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/php5.6/bin/php-config</span><br><span class="line"></span><br><span class="line">./configure --with-php-config=/usr/local/php5.6/bin/php-config</span><br><span class="line"></span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
+<p>在<code>php.ini</code>添加一条<code>extension=mcrypt.so</code></p>
+<p>重启php-fpm</p>
+<h3 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h3><p>问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">configure: error: Please reinstall the libcurl distribution -</span><br><span class="line">    easy.h should be in &lt;curl-dir&gt;/include/curl/</span><br></pre></td></tr></table></figure></p>
+<p>安装curl库<code>brew install curl</code></p>
+<p>问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">configure: error: Please specify the install prefix of iconv with --with-iconv=&lt;DIR&gt;</span><br></pre></td></tr></table></figure></p>
+<p>安装libiconv<code>brew install libiconv</code></p>
+<p>问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ld: symbol(s) not found for architecture x86_64</span><br><span class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation)</span><br><span class="line">make: *** [libs/libphp5.bundle] Error 1</span><br></pre></td></tr></table></figure></p>
+<p>MakeFile 里面找到类似下面这一行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EXTRA_LIBS = -lresolv -lmcrypt -lltdl -liconv-lm -lxml2 -lcurl -lssl -lcrypto</span><br></pre></td></tr></table></figure></p>
+<p>删除所有的 -lssl 和 -lcrypto 然后添加 libssl.dylib 和 libcrypto.dylib 的路径（如果你安装了 brew，那么则是 /usr/local/opt/openssl/lib/），重新运行 make 命令，done。</p>
+<p>这里碰到了个问题，安装gd库依赖X11，也就是libxpm库，可是mac这个版本找不到，mac从lion版本已经抛弃并且继承在了XQuartz中了，我们需要下载dmg安装，最后把inclue目录引入进来。</p>
+<p>X11代替方案：<br>下载安装 <a href="https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg" target="_blank" rel="noopener">https://dl.bintray.com/xquartz/downloads/XQuartz-2.7.11.dmg</a></p>
+<p>但是还是用问题，会报这个错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/usr/local/src/php-5.6.40 /ext/gd/gd.c:57:22:   错误：X11/xpm.h：没有那个文件或目录</span><br><span class="line">make: *** [ext/gd/gd.lo] 错误 1</span><br></pre></td></tr></table></figure></p>
+<p>我的分析是这样的，我们通过brew安装gd、x11等依赖，默认在Cellar下，但是没有放入compilers的环境变量下，所以想了个办法，我把X11目录中gd需要的头文件放到php的编译目录下，也就是如果你装了X11（XQuartz）,那么<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -R /usr/X11/include/X11 php-5.6.40/ext/gd/</span><br></pre></td></tr></table></figure></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="cf770e6fb639dcc92d9e" data-cs="7d3178834e7ab42df79706b87c951b7fa324fdad" data-r="fexlab.github.io" data-o="fexlab" data-a="fexlab" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83601565-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+</html>
