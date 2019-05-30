@@ -3,6 +3,7 @@ title: SourceTree配置代码冲突解决工具BeyondCompare
 date: 2017-08-07 15:16:21
 tags:
     - git
+cover: /img/cover_3.jpg
 ---
 
 > 前提你已经安装SourceTree和BeyondCompare软件
@@ -22,7 +23,7 @@ tags:
 
 2. 打开终端 输入如下指令:
 
-    ```
+    ```bash
     sudo ln -s /Applications/Beyond\ Compare.app/Contents/MacOS/bcomp /usr/bin/
     ```
 

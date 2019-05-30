@@ -5,6 +5,7 @@ tags:
     - mac
     - nginx
     - php
+cover: /img/cover_1.jpg
 ---
 
 ### 安装homebrew
@@ -20,7 +21,7 @@ homebrew是mac下非常好用的包管理器，会自动安装相关的依赖包
 
 2. 安装homebrew也非常简单，只要在终端中输入:
 
-    ```
+    ```bash
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
     homebrew的常用命令:
@@ -33,7 +34,7 @@ homebrew是mac下非常好用的包管理器，会自动安装相关的依赖包
 
 1. 使用brew安装nginx，brew 执行完后，nginx就安装好了。
 
-    ```
+    ```bash
     brew search nginx # 搜索nginx安装包
     brew install nginx # 安装nginx
 
@@ -59,7 +60,7 @@ homebrew是mac下非常好用的包管理器，会自动安装相关的依赖包
 
 3. 把 nginx 设置为开机启动运行：
 
-    ```
+    ```bash
     mkdir -p ~/Library/LaunchAgents
     cp /usr/local/Cellar/nginx/1.10.2_1/homebrew.mxcl.nginx.plist ~/Library/LaunchAgents/
     launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.nginx.plist
@@ -69,13 +70,13 @@ homebrew是mac下非常好用的包管理器，会自动安装相关的依赖包
 
 1. 使用brew安装对应php版本
 
-    ```
+    ```bash
     brew install homebrew/php/php56
     ```
 
 2. 以下为brew安装php56的日志，根据日志信息修改相应配置
 
-    ```
+    ```bash
     The php.ini file can be found in:
         /usr/local/etc/php/5.6/php.ini
 
@@ -117,7 +118,7 @@ homebrew是mac下非常好用的包管理器，会自动安装相关的依赖包
 
 3. 启动php-fpm
 
-    ```
+    ```bash
     # 如果环境变量配置了PATH="/usr/local/sbin:$PATH"，直接执行
     sudo php56-fpm start
     # 若没有修改环境变量，执行
@@ -126,7 +127,7 @@ homebrew是mac下非常好用的包管理器，会自动安装相关的依赖包
 
 4. 设置 nginx 的 php-fpm 配置
 
-    ```
+    ```bash
     # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
     location ~ \.php$ {
         root           /Users/cafe/Sites;

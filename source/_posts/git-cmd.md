@@ -13,7 +13,7 @@ cover: /img/cover_git_shell.png
 
 一、新建代码库
 
-```
+```bash
   # 在当前目录新建一个 Git 代码库
   $ git init
 
@@ -28,7 +28,7 @@ cover: /img/cover_git_shell.png
 
 Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
 
-```
+```bash
   # 显示当前的 Git 配置
   $ git config --list
 
@@ -51,7 +51,7 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 
 三、增加/删除文件
 
-```
+```bash
   # 添加指定文件到暂存区
   $ git add [file1] [file2] ...
 
@@ -82,7 +82,7 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 
 四、代码提交
 
-```
+```bash
   # 提交暂存区到仓库区
   $ git commit -m [message]
 
@@ -104,7 +104,7 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 
 五、分支
 
-```
+```bash
   # 列出所有本地分支
   $ git branch
 
@@ -160,7 +160,7 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 
 六、标签
 
-```
+```bash
   # 列出所有 tag
   $ git tag
 
@@ -191,7 +191,7 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 
 七、查看信息
 
-```
+```bash
   # 显示有变更的文件
   $ git status
 
@@ -238,7 +238,7 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 
 八、远程同步
 
-```
+```bash
   # 下载远程仓库的所有变动
   $ git fetch [remote]
 
@@ -281,7 +281,7 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 
 九、撤销
 
-```
+```bash
   # 恢复暂存区的指定文件到工作区
   $ git checkout [file]
 
@@ -312,7 +312,7 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 
 十、其他
 
-```
+```bash
   # 生成一个可供发布的压缩包
   $ git archive
 ```
@@ -331,7 +331,7 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 
 2、如何解决`failed to push some refs to git`
 
-  ```
+  ```bash
   # 进行代码合并
   $ git pull --rebase origin master
 
@@ -352,7 +352,7 @@ Git 的设置文件为.gitconfig，它可以在用户主目录下（全局配置
 5、`.gitignore`规则不生效的解决办法
 
 - 把某些目录或文件加入忽略规则，按照上述方法定义后发现并未生效，原因是.gitignore只能忽略那些原来没有被追踪的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。那么解决方法就是先把本地缓存删除（改变成未被追踪状态），然后再提交：
-  ```
+  ```bash
   git rm -r --cached . 或者 git rm -r README.md
   git add .
   git commit -m 'update .gitignore'
